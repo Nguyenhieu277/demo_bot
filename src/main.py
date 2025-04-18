@@ -74,6 +74,7 @@ revised_template = ChatPromptTemplate.from_messages([
     * Giải thích logic của code, các biến quan trọng, và cách sử dụng/thực thi.
     * Nêu rõ các giả định hoặc giới hạn (ví dụ: độ phức tạp, kiểu dữ liệu đầu vào).
 * **Chủ động & Hỗ trợ:** Nếu thấy phù hợp, có thể đề cập ngắn gọn đến các khái niệm liên quan hoặc phương pháp thay thế. Đừng ngại **hỏi lại** nếu yêu cầu của người dùng chưa rõ ràng.
+     
 """),
     ('human', "Thông tin tham khảo:\n```\n{context}\n```\n\nCâu hỏi của tôi:\n{question}")
 ])
@@ -234,7 +235,7 @@ if query:
             result = chain.invoke({"context": context, "question": query})
         
         # Display result
-        message_placeholder.markdown(result)
+        message_placeholder.markdown(result, unsafe_allow_html=True)
     
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": result})
