@@ -4,7 +4,7 @@ from pymongo.collection import Collection
 from typing import List, Union, Optional, Dict, Any
 import os
 from dotenv import load_dotenv
-
+import streamlit as st
 
 load_dotenv()
 
@@ -14,7 +14,7 @@ class MongoDBClient:
         
         if mongo_url is None:
             
-            mongo_url = os.environ.get("MONGO_URL")
+            mongo_url = st.secrets["MONGO_URL"]
             
         if not mongo_url:
             raise ValueError("MongoDB URI not provided and not found in environment variables")
